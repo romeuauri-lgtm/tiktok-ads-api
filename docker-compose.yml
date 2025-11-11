@@ -1,1 +1,15 @@
-
+version: "3.8"
+services:
+  tiktok-ads-api:
+    build: .
+    container_name: tiktok-ads-api
+    restart: unless-stopped
+    env_file:
+      - .env
+    ports:
+      - "${PORT:-4000}:4000"
+    networks:
+      - app-net
+networks:
+  app-net:
+    driver: bridge
